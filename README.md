@@ -1,8 +1,31 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# REACT
+React es una librería de JavaScript que facilita la creación de interfaces de usuario interactivas. Es una biblioteca de código abierto construida por Facebook y es una de las bibliotecas más utilizadas para crear aplicaciones web.
+En este proyecto hemos utilizado una Api
 
-Currently, two official plugins are available:
+## Descripción
+- Aplicacion con React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Usar Context
+
+- Desarrollo JavaScript
+
+- Implementar estilos con SASS
+
+- React Router
+
+- Peticion a la Api
+
+
+
+## 🛠 Skills
+Javascript, React, Router, SASS, Context
+
+## Authors
+
+- [@MarjoAnabel](https://github.com/MarjoAnabel)
+
+## Page Api
+
+- https://developer.nytimes.com/apis
+
