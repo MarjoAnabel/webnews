@@ -1,35 +1,41 @@
 import  { createContext, useReducer } from 'react'
-import AppReducer from './AppReducer'
+import AppReducer from '../context/AppReducer'
 import axios from 'axios'
 
 const initialState = {
- tmagazine: [],
-}
+  articles: []
+};
 
-export const GlobalProvider = ({children}) => {
-    const [state, dispatch] = useReducer(AppReducer, initialState)
-    const getTmazines = async () => {
+export const GlobalContext = createContext(initialState);
+
+export const GlobalProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  const getArticles = async () => {
+    try {
       const response = await axios.get(
-        'https://api.nytimes.com/svc/topstories/v2/t-magazine.json'
-      )
+        'https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=HPNTf20wNNYVcukn0Mr4wTXtSwFnV63i'
+      );
       dispatch({
-        type: 'GET_TMAGAZINES',
+        type: 'GET_ARTICLE',
         payload: response.data.results,
-      })
-    }  
-    return (
-        <GlobalContext.Provider
-          value={{
-            tmagazines: state.tmagazines,
-            getTmazines,
-          }}
-        >
-          {children}
-        </GlobalContext.Provider>
-      )
-      
-}
-export const GlobalContext = createContext(initialState)
+      });
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+    }
+  };
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        articles: state.articles,
+        getArticles,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  );
+};
 
 
 

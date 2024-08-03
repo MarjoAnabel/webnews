@@ -1,15 +1,13 @@
-const tmagazine = (state, action) => {
+const article = (state, action) => {
     switch (action.type) {
-      case 'GET_TMAZINE':
+      case 'GET_ARTICLE':
         return {
           ...state,
-          tmagazine: action.payload,
+          articles: action.payload,
         }
       default:
         return state
     }
     
    }
-
-   
-   export default tmagazine
+   export default article

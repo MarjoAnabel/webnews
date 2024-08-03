@@ -6,11 +6,13 @@ const UserForm = () => {
     const [data, setData] = useState({
       title: '',
       abstract: '',
+      byline: ''
     
     })
     const initialState = {
         name: '',
         abstract: '',
+        byline: ''
        
        }
        
@@ -20,7 +22,7 @@ const UserForm = () => {
 
    const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(`sending data… ${data.title} ${data.abstract}`)
+    console.log(`sending data… ${data.title} ${data.abstract}  ${data.byline} `)
     clearState()
     setTimeout(() => {
       navigate('/List')
@@ -30,7 +32,6 @@ const UserForm = () => {
    // Guarda los datos en el localStorage cuando se envía el formulario
     event.preventDefault();
     localStorage.setItem('data', JSON.stringify(data));
-    alert('Datos guardados en el localStorage');
    }
 
    useEffect(() => {
@@ -49,6 +50,7 @@ const UserForm = () => {
 const handleInputChange = (event) => {
     console.log('nombre input', event.target.title)
     console.log('valor inpunt', event.target.abstract)
+    console.log('valor inpunt', event.target.byline)
 
     if (data.title.length + 1 < 3) {
         setMessage('Tiene que tener 3 caracteres')
@@ -67,8 +69,7 @@ const handleInputChange = (event) => {
 
  return (
     <>
-    <h1>Formulario</h1>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='formulario'>
        <input
          type="text"
          placeholder="Title"
@@ -78,10 +79,17 @@ const handleInputChange = (event) => {
        />
         <input
          type="text"
-         placeholder="Abstract"
+         placeholder="Comentario"
          value = {data.abstract}
          onChange={handleInputChange}
-         name="abstract"
+         name="Comentario"
+       />
+       <input
+         type="text"
+         placeholder="Autor"
+         value = {data.byline}
+         onChange={handleInputChange}
+         name="Autor"
        />
        <button type="submit" disabled = {btnDisabled}>Enviar</button>
        <p>{message}</p>

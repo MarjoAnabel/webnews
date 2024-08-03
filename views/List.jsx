@@ -1,24 +1,25 @@
-import React, { useContext, useEffect } from 'react'
-import { GlobalContext } from '../src/context/GlobalStage'
+import React, { useContext, useEffect } from 'react';
+import { GlobalContext } from '../src/context/GlobalStage';
 
 const List = () => {
-  const Tmagazines = () => {
-    const { tmagazines, getTmagzines } = useContext(GlobalContext)
+  const { articles, getArticles } = useContext(GlobalContext)
 
-    useEffect(() => {
-      getTmagzines()
-    }, [])
+  useEffect(() => {
+    getArticles()
+  }, [])
 
-    const tmagazine = tmagazines.map((tmagazine) => {
-      return (
-        <div key={tmagazine.id}>
-          <h1>{tmagazine.title}</h1>
-          <img src={tmagazine.abstract} />
-        </div>
-      )
-    })
-    return <div>{tmagazine}</div>
-   }
-    
-}
-export default List
+  const article = articles.map((article) => {
+    return (
+      <div key={article.id}>
+        <h2>{article.title}</h2>
+        <p>{article.abstract}</p>
+        <p>{article.byline}</p>
+      </div>
+    )
+  })
+  return <div>{article}</div>
+ 
+  }
+ 
+ 
+export default List;
